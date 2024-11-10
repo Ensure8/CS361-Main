@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='css/main.css' rel='stylesheet'>
+    <title>Login</title>
+    <script src="js/LoginService.js"></script>
+</head>
+<body>
+    <header id="header">
+      <nav>
+        <section>
+          <a href = "index.html">Homepage</a>
+          <a href = "Dashboard.html">Dashboard</a>
+        </section>
+        <section id="LoginSignUpButtons">
+          <a href = "Login.html" >Login</a>
+          <a href = "Signup.html">Sign Up</a>
+        </section>
+      </nav>
+      </header>
+      <main id="mainLogin">
+        <section>
+          <form id="loginForm">
+            <fieldset>
+              <legend>Login</legend>
+              <label for="loginUsernameInput">Username
+                <input type="text" id="loginUsernameInput" name="loginUsername">
+              </label>            
+              
+              <label for="loginPasswordInput">Password
+                <input type="text" id="loginPasswordInput" name="loginPassword">
+              </label>            
+              
+              <input type="submit" id="loginSubmit" value="Submit">
+            </fieldset>
+          </form>
+        </section>
+      </main>
+      <script>login(loginForm)</script>
+</body>
+</html>
