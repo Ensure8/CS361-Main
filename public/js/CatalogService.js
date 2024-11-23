@@ -16,12 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Get array of ISBNs from cookie, check for duplicates, push new ISBN values with a max-age attribute value of 7 days.
+// Get array of ISBNs from cookie, check for duplicates, push new ISBN values with a max-age attribute value of 365 days.
 function saveBookToCookie(isbn) {
   let books = getBooksFromCookie();
   if (!books.includes(isbn)) {
     books.push(isbn);
-    document.cookie = `savedBooks=${JSON.stringify(books)}; max-age=${7 * 86400}`;
+    document.cookie = `savedBooks=${JSON.stringify(books)}; max-age=${365 * 86400}`;
   }
 }
 
@@ -59,7 +59,7 @@ function deleteBook(isbn, buttonElement) {
   if (confirm("This will delete the book")) {
     let books = getBooksFromCookie();
     books = books.filter(savedIsbn => savedIsbn !== isbn); //Remove the ISBN from saved books.
-    document.cookie = `savedBooks=${JSON.stringify(books)}; max-age=${7 * 86400}`; //Update cookie with new JSON books array and new max-age attribute
+    document.cookie = `savedBooks=${JSON.stringify(books)}; max-age=${365 * 86400}`; //Update cookie with new JSON books array and new max-age attribute
 
     buttonElement.closest('figure').remove(); // Remove the figure element from the gallery.
   }
