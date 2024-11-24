@@ -15,44 +15,51 @@ body {
   font-family: "Oxanium", sans-serif;
   font-weight: 400;
   margin: 0;
+  height: 100vh;
+  background-color: lightblue;  
 }
 
-fieldset {
-  display: flex;
-  flex-direction: column;
-  border: 5px solid var(--dark-blue);
-  font-size: 30px;
-}
 
 button:hover {
   cursor: pointer;
 }
 
-#header nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 1%;
+header {
   background-color: var(--dark-blue);
 }
 
+header nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1%;
+}
 
-#header a {
+header a {
   border-radius: 5px;
   color: white;
   font-size: clamp(1%, 3vw, 200%);
   padding: 1vw;
 }
 
-#header a:hover {
+header a:hover {
   background-color: blue;
+}
+
+header #themeButton{
+  background-image: url(../images/themePIC.png);  
+  background-color: inherit;
+  background-position: center;
+  background-size: cover;
+  border: none;
+  height: 40px;
+  width: 40px;
 }
 
 #mainIndex {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 90vh;
-  background-color: lightblue;
+  height: 100vh;  
 }
 
 #mainIndex section {
@@ -66,64 +73,12 @@ button:hover {
   font-weight: bold;
 }
 
-#loginAnchor {
-  margin-left: auto; 
-}
-
-#mainLogin section {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  height: 80vh;
-}
-
-#mainLogin input {
-  font-size: 30px;
-  border: 3px solid var(--dark-blue);
-  border-radius: 5px;
-}
-
-#mainLogin label {
-  margin: 5px;
-}
-
-#loginSubmit, #signupSubmit {
-  background-color: var(--dark-blue);
-  align-self: center;
-  width: 30%;
-}
-
-#mainThree {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  height: 80vh;
-}
-
-#mainThree section {
-  width: 20%;
-  font-size: 20px;
-  border: 3px solid var(--dark-blue);
-  border-radius: 5px;
-}
-
-#mainThree button {
-  height: 50px;
-  width: 100px;
-  border-radius: 5px;
-  font: inherit;
-  background-color: var(--dark-blue);
-}
-
 #dashboardMain {
   font-size: 30px;
 }
 
 #dashboardMain section {
-  height: 20%;
-  background-color: lightblue;
+  height: 20%;  
   align-content: end;
   font-weight: bold;
   margin: 20px;
@@ -165,10 +120,6 @@ button:hover {
 #dashboardMain #welcomeMessage {
   font-size: 50px;
   margin-bottom: 10px;
-}
-
-#dashboardBody {
-  background-color: lightblue;
 }
 
 #infoButton {

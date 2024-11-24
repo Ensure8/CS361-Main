@@ -1,19 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const addButton = document.getElementById('addButton');
-  const bookbar = document.getElementById('bookbar');
-  const gallery = document.getElementById('gallery');
 
   showDescriptiveText();//Add listener for the question-mark button if users want to know more information.
   getBooksFromCookie().forEach(isbn => fetchAndDisplayBook(isbn));//Function is called to get JSON parsed ISBN values.
-
-  addButton.addEventListener('click', () => {
-    const isbns = bookbar.value.split(',').map(isbn => isbn.trim()); // Get array of ISBNs
-    isbns.forEach(isbn => {
-      fetchAndDisplayBook(isbn);
-      saveBookToCookie(isbn);
-    });
-    bookbar.value = ''; // Clear the input field
-  });
+  addBook();
+  
 });
 
 // Get array of ISBNs from cookie, check for duplicates, push new ISBN values with a max-age attribute value of 365 days.
@@ -21,7 +11,7 @@ function saveBookToCookie(isbn) {
   let books = getBooksFromCookie();
   if (!books.includes(isbn)) {
     books.push(isbn);
-    document.cookie = `savedBooks=${JSON.stringify(books)}; max-age=${365 * 86400}`;
+    document.cookie = `savedBooks=${JSON.stringify(books)}; max-age=31536000`;
   }
 }
 
@@ -59,7 +49,7 @@ function deleteBook(isbn, buttonElement) {
   if (confirm("This will delete the book")) {
     let books = getBooksFromCookie();
     books = books.filter(savedIsbn => savedIsbn !== isbn); //Remove the ISBN from saved books.
-    document.cookie = `savedBooks=${JSON.stringify(books)}; max-age=${365 * 86400}`; //Update cookie with new JSON books array and new max-age attribute
+    document.cookie = `savedBooks=${JSON.stringify(books)}; max-age=31536000`; //Update cookie with new JSON books array and new max-age attribute
 
     buttonElement.closest('figure').remove(); // Remove the figure element from the gallery.
   }
@@ -70,3 +60,39 @@ function showDescriptiveText() {
     document.getElementById('guideParagraph').innerHTML = "By giving an ISBN value to the bar and clicking on the 'Add' button you will be able to add the book to your catalog. You will then see important book information related to the title, author, and publication date. You can also add multiple books by giving a series of ISBN numbers separated by commas. Please note that if no books are added, it's possible the Open Library API services may not be working correctly.";
   });
 }
+
+function addBook(){
+  const bookbar = document.getElementById('bookbar');
+
+  document.getElementById('addButton').addEventListener('click', () => {
+    const isbns = bookbar.value.split(',').map(isbn => isbn.trim()); // Get array of ISBNs
+    isbns.forEach(isbn => {
+      fetchAndDisplayBook(isbn);
+      saveBookToCookie(isbn);
+    });
+    bookbar.value = ''; // Clear the input field
+  });
+}
+
+// function changeTheme() {  
+//   if (document.cookie.includes("theme=dark")) {
+//     document.body.style.backgroundColor = "black";
+//     document.body.style.color = "white";
+//   } else {
+//     document.body.style.backgroundColor = "white";
+//     document.body.style.color = "black";
+//   }
+
+//   // Set up the button event listener to toggle the theme
+//   document.getElementById('themeButton').addEventListener('click', () => {
+//     if (document.body.style.backgroundColor === "white") {
+//       document.body.style.backgroundColor = "black";
+//       document.body.style.color = "white";
+//       document.cookie = "theme=dark; max-age=31536000"; // Save dark theme in cookie
+//     } else {
+//       document.body.style.backgroundColor = "white";
+//       document.body.style.color = "black";
+//       document.cookie = "theme=light; max-age=31536000"; // Save light theme in cookie
+//     }
+//   });
+// }
