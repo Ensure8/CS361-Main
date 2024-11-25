@@ -1,13 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
-
   showDescriptiveText();//Add listener for the question-mark button if users want to know more information.
   getBooksFromCookie().forEach(isbn => fetchAndDisplayBook(isbn));//Function is called to get JSON parsed ISBN values.
-  addBook();
-  
+  addBook();  
 });
 
 // Get array of ISBNs from cookie, check for duplicates, push new ISBN values with a max-age attribute value of 365 days.
 function saveBookToCookie(isbn) {
+  //if(document.cookie === ''){document.cookie = `savedBooks=${JSON.stringify(books)}; max-age=31536000`;}
+
+
+
+
+
+
+
+
+
+
+  
   let books = getBooksFromCookie();
   if (!books.includes(isbn)) {
     books.push(isbn);
@@ -74,25 +84,3 @@ function addBook(){
   });
 }
 
-// function changeTheme() {  
-//   if (document.cookie.includes("theme=dark")) {
-//     document.body.style.backgroundColor = "black";
-//     document.body.style.color = "white";
-//   } else {
-//     document.body.style.backgroundColor = "white";
-//     document.body.style.color = "black";
-//   }
-
-//   // Set up the button event listener to toggle the theme
-//   document.getElementById('themeButton').addEventListener('click', () => {
-//     if (document.body.style.backgroundColor === "white") {
-//       document.body.style.backgroundColor = "black";
-//       document.body.style.color = "white";
-//       document.cookie = "theme=dark; max-age=31536000"; // Save dark theme in cookie
-//     } else {
-//       document.body.style.backgroundColor = "white";
-//       document.body.style.color = "black";
-//       document.cookie = "theme=light; max-age=31536000"; // Save light theme in cookie
-//     }
-//   });
-// }

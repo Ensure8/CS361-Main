@@ -73,6 +73,7 @@ header #themeButton{
   font-weight: bold;
 }
 
+/*##############################*/
 #dashboardMain {
   font-size: 30px;
 }
@@ -144,4 +145,14 @@ header #themeButton{
 
 #noteParagraph {
   font-size: 20px;
+}
+
+/*##############################*/
+#bookArticle figure {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  border: 5px solid black;
+  border-radius: 5px;
+  padding: 1%;
 }
