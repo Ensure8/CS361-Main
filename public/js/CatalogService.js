@@ -1,23 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
   showDescriptiveText();//Add listener for the question-mark button if users want to know more information.
-  getBooksFromCookie().forEach(isbn => fetchAndDisplayBook(isbn));//Function is called to get JSON parsed ISBN values.
+  getBooksFromCookie().forEach(isbn => fetchAndDisplayBook(isbn));
   addBook();  
 });
 
 // Get array of ISBNs from cookie, check for duplicates, push new ISBN values with a max-age attribute value of 365 days.
 function saveBookToCookie(isbn) {
-  //if(document.cookie === ''){document.cookie = `savedBooks=${JSON.stringify(books)}; max-age=31536000`;}
-
-
-
-
-
-
-
-
-
-
-  
   let books = getBooksFromCookie();
   if (!books.includes(isbn)) {
     books.push(isbn);
@@ -37,22 +25,21 @@ function getBooksFromCookie() {
 }
 
 // Fetch and display book data
-function fetchAndDisplayBook(isbn) {
-  fetch(`https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&jscmd=data&format=json`).then(response => response.json()).then(data => {
-      const bookData = data[`ISBN:${isbn}`];
-      const bookFigure = document.createElement('figure');
-      bookFigure.innerHTML = `
-        <figcaption>
-          <p>Title: ${bookData.title}</p>
-          <p>Author: ${bookData.authors.map(author => author.name).join(', ')}</p>
-          <p>Publish Date: ${bookData.publish_date || 'N/A'}</p>
-          <button onclick="deleteBook('${isbn}', this)">Delete Book</button>
-          <p id="deleteWarning">Note: Pressing this button will remove the book from the catalog.</p>
-        </figcaption>      
-        <img id="bookImage" src="https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg" alt="Book Cover">      
-      `;
-      gallery.appendChild(bookFigure);
-    });
+async function fetchAndDisplayBook(isbn) {
+    const bookDataResponse = await fetch(`https://openlibrary.org/search.json?q=isbn:${isbn}`).then(response => response.json());      
+    const bookFigure = document.createElement('figure');
+    bookFigure.innerHTML = 
+    `
+      <figcaption>
+        <p>Title: ${bookDataResponse.docs[0].title || 'N/A'}</p>
+        <p>Author: ${bookDataResponse.docs[0].author_name[0] || 'N/A'}</p>
+        <p>Publish Date: ${bookDataResponse.docs[0].publish_date[0] || 'N/A'}</p>
+        <button onclick="deleteBook('${isbn}', this)">Delete Book</button>
+        <p id="deleteWarning">Note: Pressing this button will remove the book from the catalog.</p>
+      </figcaption>      
+      <img id="bookImage" src="https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg" alt="Book Cover">      
+    `;
+    gallery.appendChild(bookFigure);    
 }
 
 function deleteBook(isbn, buttonElement) {

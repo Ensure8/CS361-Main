@@ -8,11 +8,9 @@ async function searchBooks() {
     const response = await fetch(`/search?q=${encodeURIComponent(query)}`);
     const books = await response.json();
     
-    if (books.length === 0) {
-      bookArticle.innerHTML = '<p>No books found.</p>';
-      return;
-    }
+    if (books.length === 0) {bookArticle.innerHTML = '<p>No books found.</p>';return;}
 
+    bookArticle.innerHTML = '';
     books.forEach(book => {
       bookFigure = document.createElement("figure");
 
@@ -23,7 +21,7 @@ async function searchBooks() {
           <p>ISBN: ${book.isbn}</p>
           <p>Published: ${book.publish_date}</p>
         </figcaption>
-        <button onclick="saveBookToCookie(${book.isbn})">Add</button>
+        <button onclick="saveBookToCookie('${book.isbn}')">Add</button>
       `;
 
       bookArticle.appendChild(bookFigure);
