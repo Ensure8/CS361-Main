@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='css/main.css' rel='stylesheet'>
   <title>Home</title>
+  <script src="js/QuoteService.js"></script> 
 </head>
-<body>
+<body onload="displayQuote()">
   <header>
     <nav>
       <section>
@@ -16,10 +17,13 @@
       </section>
     </nav>
   </header>
-  <main id="mainIndex">
-    <section>
-        <p>LIBRARY CATALOG!</p>
-        <p>Use this web application to find and archive books you currently have in your backlog!</p>
+  <main>
+    <p id="quoteParagraph"></p>
+    <section id="sectionIndex">      
+      <section>
+          <p>LIBRARY CATALOG!</p>
+          <p>Use this web application to find and archive books you currently have in your backlog!</p>
+      </section>
     </section>
   </main>
 </body>

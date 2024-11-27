@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='css/main.css' rel='stylesheet'>
   <title>Search</title>
-  <script src="js/SearchService.js" defer></script>
-  <script src="js/CatalogService.js" defer></script>
+  <script src="js/SearchService.js"></script>
+  <script src="js/CatalogService.js"></script>
+  <script src="js/QuoteService.js"></script> 
 </head>
-<body>
+<body onload="displayQuote()">
     <header>
         <nav>
             <section>
@@ -18,16 +19,17 @@
           </section>
         </nav>
     </header>
-    <main>
-        <section id="searchBar">
-            <input type="text" id="query" placeholder="Search for books..." />
+    <main id="searchMain">
+        <p id="quoteParagraph"></p>
+        <label for="searchBar">
+            <input type="text" id="searchBar" placeholder="Search for books..." />
             <button onclick="searchBooks()">Search</button>
-        </section>
+        </label>
 
         <section>
-            <p>Books</p>
+            <p id="booksParagraph">Books</p>
             <article id="bookArticle">
-                <!--Insert stuff-->               
+                <!--Insert stuff-->
             </article>
         </section>
     </main>

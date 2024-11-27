@@ -1,8 +1,7 @@
-document.addEventListener('DOMContentLoaded', () => {
-  showDescriptiveText();//Add listener for the question-mark button if users want to know more information.
+function gatherAndDisplay(){  
   getBooksFromCookie().forEach(isbn => fetchAndDisplayBook(isbn));
   addBook();  
-});
+}
 
 // Get array of ISBNs from cookie, check for duplicates, push new ISBN values with a max-age attribute value of 365 days.
 function saveBookToCookie(isbn) {
@@ -53,9 +52,7 @@ function deleteBook(isbn, buttonElement) {
 }
 
 function showDescriptiveText() {
-  document.getElementById('infoButton').addEventListener('click', function() {
-    document.getElementById('guideParagraph').innerHTML = "By giving an ISBN value to the bar and clicking on the 'Add' button you will be able to add the book to your catalog. You will then see important book information related to the title, author, and publication date. You can also add multiple books by giving a series of ISBN numbers separated by commas. Please note that if no books are added, it's possible the Open Library API services may not be working correctly.";
-  });
+  document.getElementById('guideParagraph').innerHTML = "By giving an ISBN value to the bar and clicking on the 'Add' button you will be able to add the book to your catalog. You will then see important book information related to the title, author, and publication date. You can also add multiple books by giving a series of ISBN numbers separated by commas. Please note that if no books are added, it's possible the Open Library API services may not be working correctly."; 
 }
 
 function addBook(){
