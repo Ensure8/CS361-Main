@@ -138,7 +138,7 @@ header #themeButton{
 
 #infoButton {
   color: white;
-  background-color: #6a5acd !important;
+  background-color: #237068 !important;
   width: 50px !important;
   height: 50px !important;
   margin: 1% 0;
@@ -165,8 +165,9 @@ header #themeButton{
 
 #getRandomBookButton {
   margin: 1% 0;
-  background-color: #6a5acd !important;
+  background-color: #236584 !important;
   border: 2px solid var(--dark-grey);
+  border-radius: 10px;
 }
 
 #addButton {
