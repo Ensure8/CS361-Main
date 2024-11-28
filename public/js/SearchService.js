@@ -1,27 +1,30 @@
 async function searchBooks() {
-try {
-  const bookArticle = document.getElementById('bookArticle');
-  const searchBar = (document.getElementById('searchBar').value.trim() === "" ? "harry potter" : document.getElementById('searchBar').value.trim());
-  const bookObjects = await (await fetch(`http://localhost:3001/search?q=${encodeURIComponent(searchBar)}`)).json();
-  
-  if (bookObjects.length === 0) {bookArticle.innerHTML = '<p>No books found.</p>';return;}
+  try {
+    const bookArticle = document.getElementById('bookArticle');
+    const searchBarValue = document.getElementById('searchBar').value.trim() || "harry potter";
+    const bookList = await (await fetch(`http://localhost:3001/search?q=${encodeURIComponent(searchBarValue)}`)).json();
 
-  bookObjects.forEach(book => {
-    bookFigure = document.createElement("figure");
+    bookArticle.innerHTML = ''; // Clear previous search results
 
-    bookFigure.innerHTML = `
-      <figcaption>
-        <p>Title: ${book.title}</p>
-        <p>Author: ${book.authors}</p>
-        <p>ISBN: ${book.isbn}</p>
-        <p>Published: ${book.publish_date}</p>
-      </figcaption>
-      <button onclick="saveBookToCookie('${book.isbn}')">Add</button>
-    `;
-    bookArticle.appendChild(bookFigure);
-  });
-} catch (error) {
-  console.log("Search service not available.");
-  bookArticle.innerHTML = '<p>Error loading books.</p>';
+    if (bookList.length === 0) {bookArticle.innerHTML = '<p>No books found.</p>';return;}
+
+    bookList.forEach(book => {
+      const bookFigure = document.createElement("figure");
+
+      bookFigure.innerHTML = `
+        <figcaption>
+          <p>Title: ${book.title}</p>
+          <p>Author: ${book.author}</p>
+          <p>ISBN: ${book.isbn}</p>
+          <p>Published: ${book.publishDate}</p>
+        </figcaption>
+        <button onclick='saveBookToCookie(${JSON.stringify(book)})'>Add</button>
+      `;
+      bookArticle.appendChild(bookFigure);
+    });
+  } catch (error) {
+    console.log(error);
+    bookArticle.innerHTML = '<p>Error loading books.</p>';
+  }
 }
-}
+

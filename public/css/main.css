@@ -163,6 +163,17 @@ header #themeButton{
   font-size: 20px;
 }
 
+#getRandomBookButton {
+  margin: 1% 0;
+  background-color: #6a5acd !important;
+  border: 2px solid var(--dark-grey);
+}
+
+#addButton {
+  background-color: #6a5acd !important;
+  border: 2px solid var(--dark-grey);
+}
+
 /*##############################*/
 
 #bookArticle figure {
