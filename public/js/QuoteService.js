@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", displayQuote);
+
 async function displayQuote() {
 try{
     const jsonQuoteResponse = await (await fetch(`http://localhost:3003/quote`)).json();
@@ -7,4 +9,3 @@ catch(e) {
     console.log("Quote Service not active.");
 }
 }
-

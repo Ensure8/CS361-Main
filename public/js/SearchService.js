@@ -6,7 +6,6 @@ try {
   
   if (bookObjects.length === 0) {bookArticle.innerHTML = '<p>No books found.</p>';return;}
 
-  bookArticle.innerHTML = '';
   bookObjects.forEach(book => {
     bookFigure = document.createElement("figure");
 
@@ -22,6 +21,7 @@ try {
     bookArticle.appendChild(bookFigure);
   });
 } catch (error) {
+  console.log("Search service not available.");
   bookArticle.innerHTML = '<p>Error loading books.</p>';
 }
 }

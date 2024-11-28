@@ -7,14 +7,19 @@
   <title>Library Catalog</title>
   <script src="js/CatalogService.js" defer></script> 
   <script src="js/QuoteService.js" defer></script> 
+  <script src="js/WeatherService.js"></script> 
+  <script src="js/RecommendedBookService.js"></script> 
 </head>
-<body id="dashboardBody" onload="gatherAndDisplay(); displayQuote()">
+<body id="dashboardBody" onload="gatherAndDisplay()">
   <header>
     <nav>
       <section>
         <a href="index.html">Homepage</a>
         <a href="Dashboard.html">Dashboard</a>
         <a href="Search.html">Search</a>
+      </section>
+      <section id="weatherSection">
+        <!--Insert Weather Info Here-->
       </section>
     </nav>
   </header>
@@ -28,8 +33,10 @@
 
       <label for="bookbar">
         <button id="addButton">Add</button>
-        <input type="text" id="bookbar" placeholder="Enter ISBNs...">          
+        <input type="text" id="bookbar" placeholder="Enter ISBNs...">
       </label>
+
+      <button id="getRandomBook" onclick="getRandomBookAndDisplay()">Random Book</button>      
     </section>
 
     <section>

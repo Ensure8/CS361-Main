@@ -8,8 +8,9 @@
   <script src="js/SearchService.js"></script>
   <script src="js/CatalogService.js"></script>
   <script src="js/QuoteService.js"></script> 
+  <script src="js/WeatherService.js"></script> 
 </head>
-<body onload="displayQuote()">
+<body onload="">
     <header>
         <nav>
             <section>
@@ -17,13 +18,16 @@
                 <a href = "Dashboard.html">Dashboard</a>
                 <a href="Search.html">Search</a>
           </section>
+          <section id="weatherSection">
+            <!--Insert Weather Info Here-->
+          </section>
         </nav>
     </header>
     <main id="searchMain">
         <p id="quoteParagraph"></p>
         <label for="searchBar">
             <input type="text" id="searchBar" placeholder="Search for books..." />
-            <button onclick="searchBooks()">Search</button>
+            <button id="searchButton" onclick="searchBooks()">Search</button>
         </label>
 
         <section>

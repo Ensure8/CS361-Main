@@ -2,13 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Oxanium&display=swap');
 
 :root {
-	--dark-blue: rgb(31, 117 , 203);
+	--dark-grey: rgb(45,49,51);
+  --grey: rgb(74,79,82);
 }
 
 
 * {
   box-sizing: border-box;
   text-decoration: none;
+  color: white;
 }
 
 body {
@@ -16,16 +18,19 @@ body {
   font-weight: 400;
   margin: 0;
   height: 100vh;
-  background-color: lightblue;  
+  background-color: var(--grey);  
 }
 
+button:active {
+  background-color: var(--grey);
+}
 
 button:hover {
   cursor: pointer;
 }
 
 header {
-  background-color: var(--dark-blue);
+  background-color: var(--dark-grey);
 }
 
 header nav {
@@ -42,7 +47,7 @@ header a {
 }
 
 header a:hover {
-  background-color: blue;
+  background-color: black;
 }
 
 header #themeButton{
@@ -54,6 +59,8 @@ header #themeButton{
   height: 40px;
   width: 40px;
 }
+
+/*##############################*/
 
 #sectionIndex {
   display: flex;
@@ -95,13 +102,14 @@ header #themeButton{
   padding: 10px; 
   width: 75%; 
   height: 50px;
+  color: black;
 }
 
 #dashboardMain figure {
   background-color: white;
   margin: 10px 0;
   padding: 10px 20px;
-  border: 5px solid var(--dark-blue);
+  border: 5px solid var(--dark-grey);
   border-radius: 5px;
 }
 
@@ -110,12 +118,16 @@ header #themeButton{
   width: 100px; 
   height: 50px;
   font-size: 20px; 
-  background-color: var(--dark-blue); 
+  background-color: var(--dark-grey); 
 }
 
 #gallery figure{
   display: flex;
   justify-content: space-between;
+}
+
+#gallery p {
+  color: var(--dark-grey);
 }
 
 #dashboardMain #welcomeMessage {
@@ -126,22 +138,25 @@ header #themeButton{
 
 #infoButton {
   color: white;
-  background-color: green !important;
+  background-color: #6a5acd !important;
   width: 50px !important;
   height: 50px !important;
   margin: 1% 0;
+  border-radius: 50%;
+  border: var(--dark-grey) solid 2px;
 }
 
 #deleteWarning {
   font-size: 15px;
-  color: maroon;
+  color: maroon !important;
 }
 
 #bookImage {
   width: 200px;
   height: 300px;
-  border: 5px solid var(--dark-blue);
-  background-color: grey;
+  border: 5px solid var(--dark-grey);
+  background-color: var(--grey);
+  color: white;
 }
 
 #noteParagraph {
@@ -171,13 +186,15 @@ header #themeButton{
   width: 75%; 
   height: 50px;
   border-radius: 10px;
-  border: 3px solid var(--dark-blue);
+  border: 3px solid var(--dark-grey);
+  color: black;
 }
 
 #searchMain button {   
   height: 50px;
-  border-radius: 5px;
-  border: 3px solid var(--dark-blue);
+  border-radius: 10px;
+  border: var(--dark-grey) solid 2px;
+  background-color: black;
 }
 
 #bookArticle {
@@ -187,16 +204,18 @@ header #themeButton{
 
 #bookArticle figure{
   width: 500px;
+  background-color: var(--dark-grey);
 }
 
 #bookArticle button {
   align-self: center;
   justify-self: center;
-  background-color: var(--dark-blue);
-  color: rgb(255, 255, 255);
+  background-color: black;
+  color: white;
   min-width: 80px;
   min-height: 60px;
   font-size: 20px;
+  border-radius: 10px;
 }
 
 #booksParagraph {
