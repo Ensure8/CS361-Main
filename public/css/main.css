@@ -6,7 +6,7 @@
   --grey: rgb(74,79,82);
 }
 
-
+/*#####**********GENERAL******#######*/
 * {
   box-sizing: border-box;
   text-decoration: none;
@@ -19,10 +19,6 @@ body {
   margin: 0;
   height: 100vh;
   background-color: var(--grey);  
-}
-
-button:active {
-  background-color: var(--grey);
 }
 
 button:hover {
@@ -60,7 +56,7 @@ header #themeButton{
   width: 40px;
 }
 
-/*##############################*/
+/*###########******INDEX*******###################*/
 
 #sectionIndex {
   display: flex;
@@ -80,7 +76,7 @@ header #themeButton{
   font-weight: bold;
 }
 
-/*##############################*/
+/*##########******DASHBOARD**********####################*/
 #dashboardMain {
   font-size: 30px;
 }
@@ -151,6 +147,10 @@ header #themeButton{
   color: maroon !important;
 }
 
+#deleteButton:active {
+  background-color: maroon;
+}
+
 #bookImage {
   width: 200px;
   height: 300px;
@@ -175,7 +175,7 @@ header #themeButton{
   border: 2px solid var(--dark-grey);
 }
 
-/*##############################*/
+/*############****SEARCH****##################*/
 
 #bookArticle figure {
   display: flex;
@@ -215,23 +215,32 @@ header #themeButton{
 }
 
 #bookArticle figure{
-  width: 500px;
+  width: 550px;
   background-color: var(--dark-grey);
 }
 
 #bookArticle button {
   align-self: center;
   justify-self: center;
-  background-color: black;
+  background-color: #6a5acd;
   color: white;
   min-width: 80px;
   min-height: 60px;
   font-size: 20px;
+  border: black solid 3px;
   border-radius: 10px;
+}
+
+#bookArticle button:active {
+  background-color: #236584;
 }
 
 #booksParagraph {
   font-size: 30px;
+}
+
+#searchButton:active {
+  background-color: #6a5acd;
 }
 
 /*##############################*/
