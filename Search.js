@@ -9,7 +9,7 @@ app.use(express.static('public'));
 app.get('/search', async (req, res) => {
   try {
     const query = req.query.q.replace(/\s+/g, '+');
-    const response = await axios.get(`https://openlibrary.org/search.json?q=${query}&fields=isbn,title,author_name,publish_date&offset=0&limit=2`);
+    const response = await axios.get(`https://openlibrary.org/search.json?q=${query}&fields=isbn,title,author_name,publish_date&offset=0&limit=30`);
     const books = response.data.docs || [];
     const bookList = [];
 
@@ -18,14 +18,13 @@ app.get('/search', async (req, res) => {
       const title = book.title || 'N/A';
       const author = book.author_name?.[0] || 'N/A';
       const publishDate = book.publish_date?.[0] || 'N/A';
-      const cover = isbn !== 'N/A' ? `https://covers.openlibrary.org/b/isbn/${isbn}-S.jpg` : 'N/A';
+      const cover = isbn !== 'N/A' ? `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg` : 'N/A';
 
       bookList.push({isbn, title, author, publishDate, cover});
     }
 
     res.json(bookList);
   } catch (error) {
-    console.error('Error fetching books:', error.message);
     res.status(500).json({ error: 'Error fetching books.' });
   }
 });

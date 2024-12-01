@@ -1,7 +1,6 @@
 import json
 import random
 import time
-import os
 
 
 #Books with genres. in JSON format

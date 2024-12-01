@@ -6,13 +6,19 @@ try {
     const weatherInfoData = await (await fetch("http://localhost:3002/weather")).json();
 
     weatherSection.innerHTML = `
-        <p>${weatherInfoData.temperature}</p>
-        <p>${weatherInfoData.windSpeed}</p>
-        <p>${weatherInfoData.windDirection}</p>
-        <p>${weatherInfoData.shortForecast}</p>
-        <p>${weatherInfoData.startTime}</p>
-        <p>${weatherInfoData.city}</p>
-        <p>${weatherInfoData.state}</p>
+        <section>
+            <p>Temperature: ${weatherInfoData.temperature}</p>
+            <p>Wind Speed: ${weatherInfoData.windSpeed}</p>
+        </section>
+        <section>
+            <p>Wind Direction: ${weatherInfoData.windDirection}</p>        
+            <p>Forecast: ${weatherInfoData.shortForecast}</p>
+        </section>
+        <section>
+            <p>Start Time: ${(new Date(weatherInfoData.startTime).toLocaleString('en-US'))}</p>
+            <p>City: ${weatherInfoData.city}</p>
+            <p>State: ${weatherInfoData.state}</p>
+        </section>
     `;
 }
 catch(e){

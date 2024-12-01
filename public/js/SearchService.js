@@ -18,7 +18,7 @@ async function searchBooks() {
           <p>ISBN: ${book.isbn}</p>
           <p>Published: ${book.publishDate}</p>
         </figcaption>
-        <button onclick='saveBookToCookie(${JSON.stringify(book)})'>Add</button>
+        <button onclick='saveBookToCookieWithId(${JSON.stringify(book)})'>Add</button>
       `;
       bookArticle.appendChild(bookFigure);
     });
@@ -28,3 +28,23 @@ async function searchBooks() {
   }
 }
 
+function saveBookToCookieWithId(book){
+  const cookies = document.cookie.split('; ').find(row => row.startsWith('savedBooks='));
+  const savedBooks = cookies ? JSON.parse(cookies.split('=')[1]) : [];
+  const maxId = savedBooks.reduce((max, book) => Math.max(max, book.id), 0);
+  let currentBookIdValue = maxId + 1;
+  
+  const newBook = {
+    id: currentBookIdValue, //Added ID
+    isbn: book.isbn,
+    title: book.title,
+    author: book.author, 
+    publishDate: book.publishDate,
+    cover: book.cover
+  }
+
+  if (!savedBooks.some(savedBook => savedBook.id === newBook.id)) {
+    savedBooks.push(newBook);
+    document.cookie = `savedBooks=${JSON.stringify(savedBooks)}; max-age=31536000`; // 365 days expiration
+  }
+}

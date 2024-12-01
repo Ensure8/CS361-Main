@@ -12,11 +12,11 @@ try {
     const forecastResponseData = await (await fetch(weatherResponseData.properties.forecast)).json();
 
     const weatherData = {
-        temperature: forecastResponseData.properties.periods[0].temperature || 'N/A',
-        windSpeed: forecastResponseData.properties.periods[0].windSpeed || 'N/A',
-        windDirection: forecastResponseData.properties.periods[0].windDirection || 'N/A',
-        shortForecast: forecastResponseData.properties.periods[0].shortForecast || 'N/A',
-        startTime: forecastResponseData.properties.periods[0].startTime || 'N/A',
+        temperature: forecastResponseData.properties?.periods[0]?.temperature || 'N/A',
+        windSpeed: forecastResponseData.properties?.periods[0]?.windSpeed || 'N/A',
+        windDirection: forecastResponseData.properties?.periods[0]?.windDirection || 'N/A',
+        shortForecast: forecastResponseData.properties?.periods[0]?.shortForecast || 'N/A',
+        startTime: forecastResponseData.properties?.periods[0]?.startTime || 'N/A',
         city: weatherResponseData.properties.relativeLocation.properties.city || 'N/A',
         state: weatherResponseData.properties.relativeLocation.properties.state || 'N/A'
     }

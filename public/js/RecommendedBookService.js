@@ -1,17 +1,13 @@
 async function getRandomBookAndDisplay() {
 try{
-    const cookies = document.cookie.split('; ').find(row => row.startsWith('savedBooks='));
-    const savedBooks = cookies ? JSON.parse(cookies.split('=')[1]) : [];
-    const maxId = savedBooks.reduce((max, book) => Math.max(max, book.id), 0);
-    let bookIdCounter = maxId + 1;
-
-    const randomBookResponseData = await (await fetch("http://localhost:3003/randomBook")).json();
+    let currentBookIdValue = getBookIdCounterValue + 1;
+    const randomBookResponseData = await (await fetch("http://localhost:3004/randomBook")).json();
   
     const book = {
-        id: bookIdCounter,
+        id: currentBookIdValue,
         isbn: 'N/A',
         title: randomBookResponseData?.title || 'N/A',
-        author: randomBookResponseData?.author?.[0]?.name || 'N/A', // Only the first author
+        author: randomBookResponseData?.author?.[0]?.name || 'N/A', 
         publishDate: 'N/A',
         cover: randomBookResponseData?.cover_image || 'N/A'
       };
@@ -25,5 +21,12 @@ try{
 catch(e) {
     console.log("Could not retrieve random book.");
 }
+}
 
+function getBookIdCounterValue () {
+  const cookies = document.cookie.split('; ').find(row => row.startsWith('savedBooks='));
+  const savedBooks = cookies ? JSON.parse(cookies.split('=')[1]) : [];
+  const maxId = savedBooks.reduce((max, book) => Math.max(max, book.id), 0);
+  
+  return maxId;
 }

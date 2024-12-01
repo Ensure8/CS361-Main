@@ -4,6 +4,7 @@
 :root {
 	--dark-grey: rgb(45,49,51);
   --grey: rgb(74,79,82);
+  --dark-blue: rgb(30, 70, 95);
 }
 
 /*#####**********GENERAL******#######*/
@@ -243,7 +244,7 @@ header #themeButton{
   background-color: #6a5acd;
 }
 
-/*##############################*/
+/*###########******QUOTE**********###################*/
 
 #quoteParagraph {
   justify-self: center;
@@ -254,4 +255,23 @@ header #themeButton{
   background-color: cornsilk;
   border-radius: 5px;
   padding: 3px;
+}
+
+/*###########******WEATHER**********###################*/
+
+#weatherSection{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--dark-blue);
+  border: var(--grey) solid 2px;
+}
+
+#weatherSection p{
+  margin: 0;
+  font-size: clamp(1%, 0.75vw, 100%);
+}
+
+#weatherSection section {
+  margin: 0 10px;
 }
