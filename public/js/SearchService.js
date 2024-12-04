@@ -35,7 +35,7 @@ function saveBookToCookieWithId(book){
   let currentBookIdValue = maxId + 1;
   
   const newBook = {
-    id: currentBookIdValue, //Added ID
+    id: currentBookIdValue, //Add ID
     isbn: book.isbn,
     title: book.title,
     author: book.author, 

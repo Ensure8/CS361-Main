@@ -13,6 +13,12 @@ function updateIdCounter(savedBooks) {
   bookIdCounter = maxId + 1;
 }
 
+// Retrieve books from cookie (or an empty array if at least one book object isn't there).
+function getBooksFromCookie() {
+  const cookies = document.cookie.split('; ').find(row => row.startsWith('savedBooks='));
+  return cookies ? JSON.parse(cookies.split('=')[1]) : [];
+}
+
 // Save a js book object to cookie
 function saveBookToCookie(book) {
   let books = getBooksFromCookie();
@@ -20,12 +26,6 @@ function saveBookToCookie(book) {
     books.push(book);
     document.cookie = `savedBooks=${JSON.stringify(books)}; max-age=31536000`; // 365 days expiration
   }
-}
-
-// Retrieve books from cookie (or an empty array if at least one book object isn't there).
-function getBooksFromCookie() {
-  const cookies = document.cookie.split('; ').find(row => row.startsWith('savedBooks='));
-  return cookies ? JSON.parse(cookies.split('=')[1]) : [];
 }
 
 // Fetch book data from Open Library legacy book API and save information to cookie.
@@ -102,7 +102,7 @@ function deleteBook(bookId) {
 function showDescriptiveText(){
   const infoButton = document.getElementById("infoButton");
   if (infoButton.getAttribute("clicked-on") === "false") {
-    document.getElementById("guideParagraph").innerHTML = `To use the catalog service, you must give an ISBN or a list of ISBNs separated by commas to add specific books to your library catalog. Once the books show up, a delete button will also present itself in order for you to delete the particular book from your catalog. You may also add a random book if you don't feel like adding one manually through an ISBN. If by any chance, a book isn't being added or it takes a long time, it could be due to problems with OpenLibrary's APIs.`;
+    document.getElementById("guideParagraph").innerHTML = `To use the catalog service, you must give an ISBN or a list of ISBNs separated by commas to add specific books to your library catalog. Once the books show up, a delete button will also present itself in order for you to remove a particular book from your catalog. You may also add a random book if you don't feel like adding one manually through an ISBN. If by any chance a book isn't being added or it takes a long time, it could be due to problems with OpenLibrary's APIs.`;
     infoButton.setAttribute("clicked-on", "true");
   }
   else {
